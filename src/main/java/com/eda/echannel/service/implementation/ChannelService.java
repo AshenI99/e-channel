@@ -1,27 +1,20 @@
 package com.eda.echannel.service.implementation;
 
 import com.eda.echannel.dto.request.ChannelUpdateRequestDto;
-import com.eda.echannel.dto.response.DoctorResponseDto;
-import com.eda.echannel.dto.response.HospitalResponseDto;
+import com.eda.echannel.dto.response.SearchResponseDto;
 import com.eda.echannel.model.Channel;
-import com.eda.echannel.model.Doctor;
-import com.eda.echannel.model.Hospital;
 import com.eda.echannel.repository.IChannelRepository;
 import com.eda.echannel.repository.IDoctorRepository;
 import com.eda.echannel.repository.IHospitalRepository;
 import com.eda.echannel.repository.ISpecializationRepository;
 import com.eda.echannel.service.IChannelService;
-import com.eda.echannel.service.IDoctorService;
-import com.eda.echannel.util.InputValidatorUtil;
-import com.eda.echannel.util.MessagesAndContent;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -221,5 +214,34 @@ public class ChannelService implements IChannelService {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
+    }
+
+    @Override
+    public List<SearchResponseDto> getAllChannels() throws Exception {
+        try {
+            List<Channel> channelList = channelRepository.findAll();
+
+            List<SearchResponseDto> responseDtoList = new ArrayList<SearchResponseDto>();
+
+            for (Channel channel : channelList) {
+                responseDtoList.add(convertChannelToSearchResponseDto(channel));
+            }
+
+            return  responseDtoList;
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public SearchResponseDto convertChannelToSearchResponseDto(Channel channel) throws Exception {
+        SearchResponseDto searchResponseDto = new SearchResponseDto();
+        BeanUtils.copyProperties(channel, searchResponseDto);
+
+        searchResponseDto.setDoctorName(doctorRepository.findById(channel.getDoctorId()).get().getName());
+        searchResponseDto.setHospitalName(hospitalRepository.findById(channel.getHospitalId()).get().getHospitalName());
+        searchResponseDto.setSpecializationName(specializationRepository.findById(channel.getSpecializationId()).get().getSpecializationName());
+        return searchResponseDto;
     }
 }
