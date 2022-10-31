@@ -16,5 +16,4 @@ public class DoctorRequestDto {
     private String name;
     private List<Specialization> specializations;
     private List<Hospital> hospitals;
-
 }
