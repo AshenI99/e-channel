@@ -1,7 +1,7 @@
 package com.eda.echannel.controller;
 
 import com.eda.echannel.dto.response.HospitalResponseDto;
-import com.eda.echannel.dto.response.request.HospitalRequestDto;
+import com.eda.echannel.dto.request.HospitalRequestDto;
 import com.eda.echannel.model.Hospital;
 import com.eda.echannel.service.IHospitalService;
 import com.eda.echannel.service.implementation.HospitalService;
@@ -58,7 +58,11 @@ public class HospitalController {
         }
 
     }
+<<<<<<< HEAD
 
+=======
+//
+>>>>>>> 87bec9b210cfe1b3109d32722d623d95f252c8d8
 //    @PutMapping(value = "/update/{hospitalName}")
 //    public ResponseEntity<HospitalResponseDto> updateHospital(@PathVariable("hospitalName") Long hospitalId, @RequestBody HospitalRequestDto hospital) {
 //

@@ -30,9 +30,15 @@ public class Channel {
     @Column(name = "specialization_id")
     private Long specializationId;
 
-    @Column(name = "date")
-    private Date date;
+    @Column(name = "date_time")
+    private String dateTime;
+
+    @Column(name = "fee")
+    private Double fee;
 
     @Column(name = "maximum_patients")
     private Integer maximumPatients;
+
+    @Column(name = "active_patients")
+    private Integer activePatients;
 }
