@@ -72,7 +72,7 @@ public class SearchService implements ISearchService {
         }
 
         if(date != null){
-            searchString += " and date='" + date + "'";
+            searchString += " and date_time like '" + date + "%'";
         }
 
         List<Channel> channelList = customQueryRepository.getChannelList(searchString);

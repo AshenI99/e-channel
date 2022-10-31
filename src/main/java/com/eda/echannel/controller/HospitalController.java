@@ -58,18 +58,18 @@ public class HospitalController {
         }
 
     }
-
-    @PutMapping(value = "/update/{hospitalName}")
-    public ResponseEntity<HospitalResponseDto> updateHospital(@PathVariable("hospitalName") Long hospitalId, @RequestBody HospitalRequestDto hospital) {
-
-        try {
-            HospitalResponseDto updateHospital = hospitalService.update(hospitalId, hospital);
-
-            return new ResponseEntity<>(updateHospital, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-
-    }
+//
+//    @PutMapping(value = "/update/{hospitalName}")
+//    public ResponseEntity<HospitalResponseDto> updateHospital(@PathVariable("hospitalName") Long hospitalId, @RequestBody HospitalRequestDto hospital) {
+//
+//        try {
+//            HospitalResponseDto updateHospital = hospitalService.update(hospitalId, hospital);
+//
+//            return new ResponseEntity<>(updateHospital, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//
+//    }
 
 }
