@@ -69,3 +69,9 @@ E-Channeling
 | 	|   ├── ISearchService
 | 	|   ├── ISpecializationService
 ```
+##Group Members
+ * Ashen Iranda
+ * Vihan Gammanpila 
+ * Dinindu Gunathilaka 
+ * Milindi Senevirathne 
+ * Pasidalee Disanayake
