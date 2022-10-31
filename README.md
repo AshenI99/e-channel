@@ -70,8 +70,9 @@ E-Channeling
 | 	|   ├── ISpecializationService
 ```
 ## Group Members
- * Ashen Iranda
- * Vihan Gammanpila 
- * Dinindu Gunathilaka 
- * Milindi Senevirathne 
- * Pasidalee Disanayake
+ * 194064M Iranda S.A.A.
+ * 194045G Gammanpila G.I.V.P. 
+ * 194052B Gunathilaka D.A.D.P. 
+ * 194149E Senevirathne E.G.M.A. 
+ * 194037J Dissanayake P.H
+ * 194082P Kudagodage N.E.
