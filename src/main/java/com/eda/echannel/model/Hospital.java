@@ -24,4 +24,8 @@ public class Hospital {
 
     @Column(name = "location", length = 50)
     private String location;
+
+    @Column(name = "createdDateTime", nullable = false)
+    private Long createdDateTime;
+
 }
