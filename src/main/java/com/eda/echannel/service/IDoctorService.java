@@ -8,16 +8,16 @@ import java.util.List;
 
 public interface IDoctorService {
 
-    List<Doctor> getAll() throws Exception;
+    public List<Doctor> getAll() throws Exception;
 
-    DoctorResponseDto findDoctorById(Long doctorId) throws Exception;
+    public DoctorResponseDto findDoctorById(Long doctorId) throws Exception;
 
-    DoctorResponseDto createDoctor(DoctorRequestDto doctor) throws Exception;
+    public DoctorResponseDto createDoctor(DoctorRequestDto doctor) throws Exception;
 
-    DoctorResponseDto updateDoctor(DoctorRequestDto doctor) throws Exception;
+    public DoctorResponseDto updateDoctor(DoctorRequestDto doctor) throws Exception;
 
-    void deleteDoctor(Long id) throws Exception;
+    public void deleteDoctor(Long id) throws Exception;
 
-    DoctorResponseDto convertDoctorToDoctorResponseDto(Doctor doctor) throws Exception;
+    public DoctorResponseDto convertDoctorToDoctorResponseDto(Doctor doctor) throws Exception;
 
 }
