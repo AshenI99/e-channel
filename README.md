@@ -16,24 +16,56 @@ This is an e-channeling web application. With the below functionalities.
 So basically, this system is having customer interaction as well as admin interaction functionalities.
 
 ## Folder/file structure
-
-Follow the current naming convention and folder structure.
-
+The names of the folders and files. 
 ```
 E-Channeling
-├── client                   // Frontend
-|   ├── public               // Public folder
-|   ├── src                  // Add all the source files here
-| 	|   ├── assets           // Assets folder
-| 	|   ├── components       // Components folder. Add all sub components here
-|	|   ├── pages            // Main pages folder such as About Page, Landing Page etc.
-| 	|   ├── styles           // Styles files
-| 	|   ├── stylesVar        // Fixed Styles Library 
-|	|   ├── App.tsx          // App.tsx
-| 	|   └── index.tsx        // index.tsx file
-|   ├── .gitignore           // Gitignore file
-|   └── package.json         // node module dependencies
-├── e-channel-backend                      //Backend
-|       ├── controllers      // Add all controller for models here
-└── readme.md                // README file
+├── e-channel-backend                            
+|   ├── controller                              
+| 	|   ├── AppointmentController.java           
+| 	|   ├── ChannelController.java     
+| 	|   ├── DoctorController.java  
+| 	|   ├── HospitalController.java
+| 	|   ├── SearchController.java
+| 	|   ├── SpecializationController.java
+|   ├── dto                             
+| 	|   ├── request 
+| 	|   |    ├── AppointmentRequestDto
+| 	|   |    ├── ChannelRequestDto
+| 	|   |    ├── DoctorRequestDto
+| 	|   |    ├── HospitalRequestDto
+| 	|   |    ├── SearchRequestDto
+| 	|   ├── response
+| 	|   |    ├── AppointmentResponseDto
+| 	|   |    ├── DoctorResponseDto
+| 	|   |    ├── HospitalResponseDto
+| 	|   |    ├── SearchResponseDto
+| 	|   |    ├── SpecializationResponseDto
+|   ├── model                              
+| 	|   ├── Appointment           
+| 	|   ├── Channel     
+| 	|   ├── Doctor  
+| 	|   ├── DoctorHospital
+| 	|   ├── Hospital
+| 	|   ├── Specialization
+|   ├── repository                              
+| 	|   ├── IAppointmentRepository           
+| 	|   ├── IChannelRepository 
+| 	|   ├── IDoctorRepository  
+| 	|   ├── IDoctorHospitalRepository
+| 	|   ├── IHospitalRepository
+| 	|   ├── ISpecializationRepository
+|   ├── service
+| 	|   ├── implementation
+| 	|   |    ├── AppointmentService
+| 	|   |    ├── ChannelService
+| 	|   |    ├── DoctorService
+| 	|   |    ├── HospitalService
+| 	|   |    ├── SearchService
+| 	|   |    ├── SpecializationService
+| 	|   ├── IAppointmentService           
+| 	|   ├── IChannelService 
+| 	|   ├── IDoctorService  
+| 	|   ├── IHospitalService
+| 	|   ├── ISearchService
+| 	|   ├── ISpecializationService
 ```
