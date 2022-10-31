@@ -20,12 +20,12 @@ public class HospitalController {
     private final IHospitalService hospitalService;
 
     @Autowired
-    public HospitalController(HospitalService hospitalService){
+    public HospitalController(HospitalService hospitalService) {
         this.hospitalService = hospitalService;
     }
 
     @GetMapping("list")
-    public ResponseEntity<List<Hospital>> getAllHospitals () {
+    public ResponseEntity<List<Hospital>> getAllHospitals() {
 
         try {
             List<Hospital> hospitalList = hospitalService.getAll();
@@ -58,22 +58,4 @@ public class HospitalController {
         }
 
     }
-<<<<<<< HEAD
-
-=======
-//
->>>>>>> 87bec9b210cfe1b3109d32722d623d95f252c8d8
-//    @PutMapping(value = "/update/{hospitalName}")
-//    public ResponseEntity<HospitalResponseDto> updateHospital(@PathVariable("hospitalName") Long hospitalId, @RequestBody HospitalRequestDto hospital) {
-//
-//        try {
-//            HospitalResponseDto updateHospital = hospitalService.update(hospitalId, hospital);
-//
-//            return new ResponseEntity<>(updateHospital, HttpStatus.OK);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//
-//    }
-
 }

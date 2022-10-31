@@ -1,5 +1,6 @@
 package com.eda.echannel.dto.response;
 
+import com.eda.echannel.model.Channel;
 import com.eda.echannel.model.Doctor;
 import com.eda.echannel.model.Hospital;
 import com.eda.echannel.model.Specialization;
@@ -15,11 +16,10 @@ import java.util.Date;
 @NoArgsConstructor
 public class AppointmentResponseDto {
     private Long appointmentId;
-    private Date appointmentDate;
-    private ZonedDateTime appointmentTime;
+    private Long appointmentDate;
+    private Long appointmentTime;
+    private Integer appointmentNumber;
     private String patientNIC;
     private String patientEmail;
-    private Hospital hospital;
-    private Doctor doctor;
-    private Specialization specialization;
+    private SearchResponseDto channel;
 }

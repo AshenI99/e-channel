@@ -71,15 +71,13 @@ public class HospitalService implements IHospitalService {
                 throw new Exception("Invalid input data.");
             }
 
-            String hospitalName = InputValidatorUtil.validateStringProperty(MessagesAndContent.HOSPITAL_M01, request.getHospitalName(), "Hospital Name", 150);
+            String hospitalName = InputValidatorUtil.validateStringProperty(MessagesAndContent.HOSPITAL_01, request.getHospitalName(), "Hospital Name", 150);
             hospitalRequest.setHospitalName(hospitalName);
 
-            String location = InputValidatorUtil.validateStringProperty(MessagesAndContent.HOSPITAL_M02, request.getLocation(), "Location", 100);
+            String location = InputValidatorUtil.validateStringProperty(MessagesAndContent.HOSPITAL_01, request.getLocation(), "Location", 100);
             hospitalRequest.setLocation(location);
 
             long currentTime = Instant.now().getEpochSecond();
-
-            hospitalRequest.setCreatedDateTime(currentTime);
 
             Hospital savedHospital = hospitalRepository.save(hospitalRequest);
 

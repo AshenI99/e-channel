@@ -1,8 +1,6 @@
 package com.eda.echannel.service;
 
 import com.eda.echannel.dto.request.ChannelUpdateRequestDto;
-import com.eda.echannel.dto.response.HospitalResponseDto;
-import com.eda.echannel.dto.response.request.HospitalRequestDto;
 import com.eda.echannel.model.Channel;
 
 public interface IChannelService {

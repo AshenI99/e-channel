@@ -23,7 +23,7 @@ public class DoctorHospital {
     private Long doctorId;
 
     @OneToOne
-    @JoinColumn(name = "hospital_id", nullable = false, referencedColumnName = "hospital_id")
+    @JoinColumn(name = "hospital_id", nullable = false)
     private Hospital hospital;
 
 }
