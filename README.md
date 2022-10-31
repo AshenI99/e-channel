@@ -14,3 +14,26 @@ This is an e-channeling web application. With the below functionalities.
 5. Doctors list and channeling time slots are displayed.
 
 So basically, this system is having customer interaction as well as admin interaction functionalities.
+
+## Folder/file structure
+
+Follow the current naming convention and folder structure.
+
+```
+E-Channeling
+├── client                   // Frontend
+|   ├── public               // Public folder
+|   ├── src                  // Add all the source files here
+| 	|   ├── assets           // Assets folder
+| 	|   ├── components       // Components folder. Add all sub components here
+|	|   ├── pages            // Main pages folder such as About Page, Landing Page etc.
+| 	|   ├── styles           // Styles files
+| 	|   ├── stylesVar        // Fixed Styles Library 
+|	|   ├── App.tsx          // App.tsx
+| 	|   └── index.tsx        // index.tsx file
+|   ├── .gitignore           // Gitignore file
+|   └── package.json         // node module dependencies
+├── e-channel-backend                      //Backend
+|       ├── controllers      // Add all controller for models here
+└── readme.md                // README file
+```
