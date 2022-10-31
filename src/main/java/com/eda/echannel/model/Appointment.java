@@ -22,14 +22,14 @@ import java.util.List;
 public class Appointment {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "patientID")
+    @Column (name = "appointmentId")
     private Long appointmentId;
 
     @Column (name = "appointmentDate",length = 15)
-    private Date appointmentDate;
+    private Long appointmentDate;
 
     @Column (name = "appointmentTime", length=10)
-    private ZonedDateTime appointmentTime;
+    private Long appointmentTime;
 
     @Column (name = "patientNIC",length =12)
     private String patientNIC;
@@ -37,16 +37,16 @@ public class Appointment {
     @Column (name = "patientEmail",length = 100)
     private String patientEmail;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hospitalId", insertable = false, updatable = false)
-    private List<Hospital> hospitalList = new ArrayList<>();
+    private Hospital hospital;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id", insertable = false, updatable = false)
-    private List<Doctor> doctorList = new ArrayList<>();
+    private Doctor doctor;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "specializationId", insertable = false, updatable = false)
-    private List<Specialization> specializationList = new ArrayList<>();
+    private Specialization specialization;
 
 }
