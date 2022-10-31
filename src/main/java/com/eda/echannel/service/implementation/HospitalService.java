@@ -1,13 +1,17 @@
 package com.eda.echannel.service.implementation;
 
 import com.eda.echannel.dto.response.HospitalResponseDto;
+import com.eda.echannel.dto.response.request.HospitalRequestDto;
 import com.eda.echannel.model.Hospital;
 import com.eda.echannel.repository.IHospitalRepository;
 import com.eda.echannel.service.IHospitalService;
+import com.eda.echannel.util.InputValidatorUtil;
+import com.eda.echannel.util.MessagesAndContent;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,4 +60,37 @@ public class HospitalService implements IHospitalService {
         BeanUtils.copyProperties(hospital, hospitalResponseDto);
         return hospitalResponseDto;
     }
+
+    @Override
+    public HospitalResponseDto create(HospitalRequestDto request) throws Exception {
+        try {
+
+            Hospital hospitalRequest = new Hospital();
+
+            if (request == null) {
+                throw new Exception("Invalid input data.");
+            }
+
+            String hospitalName = InputValidatorUtil.validateStringProperty(MessagesAndContent.HOSPITAL_M01, request.getHospitalName(), "Hospital Name", 150);
+            hospitalRequest.setHospitalName(hospitalName);
+
+            String location = InputValidatorUtil.validateStringProperty(MessagesAndContent.HOSPITAL_M02, request.getLocation(), "Location", 100);
+            hospitalRequest.setLocation(location);
+
+            long currentTime = Instant.now().getEpochSecond();
+
+            hospitalRequest.setCreatedDateTime(currentTime);
+
+            Hospital savedHospital = hospitalRepository.save(hospitalRequest);
+
+            HospitalResponseDto hospitalDto = convertHospitalToHospitalResponseDto(savedHospital);
+
+            return hospitalDto;
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+
+    }
+
 }

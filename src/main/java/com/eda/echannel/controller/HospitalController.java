@@ -1,6 +1,7 @@
 package com.eda.echannel.controller;
 
 import com.eda.echannel.dto.response.HospitalResponseDto;
+import com.eda.echannel.dto.response.request.HospitalRequestDto;
 import com.eda.echannel.model.Hospital;
 import com.eda.echannel.service.IHospitalService;
 import com.eda.echannel.service.implementation.HospitalService;
@@ -44,4 +45,31 @@ public class HospitalController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @PostMapping(value = "/create")
+    public ResponseEntity<HospitalResponseDto> createHospital(@RequestBody HospitalRequestDto hospital) {
+
+        try {
+            HospitalResponseDto savedHospital = hospitalService.create(hospital);
+
+            return new ResponseEntity<>(savedHospital, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    @PutMapping(value = "/update/{hospitalName}")
+    public ResponseEntity<HospitalResponseDto> updateHospital(@PathVariable("hospitalName") Long hospitalId, @RequestBody HospitalRequestDto hospital) {
+
+        try {
+            HospitalResponseDto updateHospital = hospitalService.update(hospitalId, hospital);
+
+            return new ResponseEntity<>(updateHospital, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
 }
