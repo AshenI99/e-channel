@@ -1,4 +1,4 @@
-package com.eda.echannel.dto.response.request;
+package com.eda.echannel.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

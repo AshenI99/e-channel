@@ -1,7 +1,7 @@
 package com.eda.echannel.service;
 
 import com.eda.echannel.dto.response.HospitalResponseDto;
-import com.eda.echannel.dto.response.request.HospitalRequestDto;
+import com.eda.echannel.dto.request.HospitalRequestDto;
 import com.eda.echannel.model.Hospital;
 
 import java.util.List;
