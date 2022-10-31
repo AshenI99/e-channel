@@ -69,8 +69,30 @@ public class DoctorService implements IDoctorService {
     public DoctorResponseDto createDoctor(DoctorRequestDto doctor) throws Exception {
         try {
             Doctor newDoctor =new Doctor();
-            newDoctor.setName(doctor.getName());
-            return convertDoctorToDoctorResponseDto(newDoctor);
+
+            String name = InputValidatorUtil.validateStringProperty(MessagesAndContent.DOCTOR_01, doctor.getName(), "Doctor Name", 100);
+            newDoctor.setName(name);
+
+            List<Hospital> hospitalList =new ArrayList<>();
+
+            Doctor savedDoctor = doctorRepository.save(newDoctor);
+            if (doctor.getHospitals() != null) {
+                for (Hospital hospital : doctor.getHospitals()) {
+                    Optional<Hospital> foundHospital= hospitalRepository.findById(hospital.getHospitalId());
+                    if (foundHospital.isEmpty()) {
+                        throw new Exception(MessagesAndContent.HOSPITAL_01);
+                    }
+                    DoctorHospital newDoctorHospital = new DoctorHospital();
+                    newDoctorHospital.setDoctorId(savedDoctor.getId());
+                    newDoctorHospital.setHospital(hospital);
+                    doctorHospitalRepository.save(newDoctorHospital);
+                    hospitalList.add(hospital);
+                }
+            }
+            DoctorResponseDto doctorResponseDto = convertDoctorToDoctorResponseDto(newDoctor);
+            doctorResponseDto.setHospitals(hospitalList);
+
+            return doctorResponseDto;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
