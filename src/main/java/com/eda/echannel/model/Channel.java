@@ -38,4 +38,7 @@ public class Channel {
 
     @Column(name = "maximum_patients")
     private Integer maximumPatients;
+
+    @Column(name = "active_patients")
+    private Integer activePatients;
 }
