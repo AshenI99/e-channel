@@ -31,7 +31,7 @@ public class Channel {
     private Long specializationId;
 
     @Column(name = "date")
-    private Date date;
+    private String date;
 
     @Column(name = "maximum_patients")
     private Integer maximumPatients;

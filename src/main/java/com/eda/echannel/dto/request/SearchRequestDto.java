@@ -12,7 +12,5 @@ public class SearchRequestDto {
     private Long doctorId;
     private Long hospitalId;
     private Long specializationId;
-    private String fromDate;
-    private String toDate;
-
+    private String date;
 }

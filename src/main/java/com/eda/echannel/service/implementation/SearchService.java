@@ -47,6 +47,7 @@ public class SearchService implements ISearchService {
         Long doctorId = searchRequestDto.getDoctorId();
         Long hospitalId = searchRequestDto.getHospitalId();
         Long specializationId = searchRequestDto.getSpecializationId();
+        String date = searchRequestDto.getDate();
 
         if(doctorId == null && hospitalId == null && specializationId == null){
             throw new Exception("Required fields are missing");
@@ -68,6 +69,10 @@ public class SearchService implements ISearchService {
                 searchString += " and ";
             }
             searchString += "specialization_id=" + specializationId;
+        }
+
+        if(date != null){
+            searchString += " and date='" + date + "'";
         }
 
         List<Channel> channelList = customQueryRepository.getChannelList(searchString);

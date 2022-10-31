@@ -15,6 +15,6 @@ public class SearchResponseDto {
     private String doctorName;
     private String hospitalName;
     private String specializationName;
-    private Date date;
+    private String date;
     private Integer maximumPatients;
 }
