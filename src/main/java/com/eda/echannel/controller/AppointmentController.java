@@ -1,6 +1,7 @@
 package com.eda.echannel.controller;
 
 
+import com.eda.echannel.dto.request.AppointmentRequestDto;
 import com.eda.echannel.dto.response.AppointmentResponseDto;
 import com.eda.echannel.service.IAppointmentService;
 import com.eda.echannel.service.implementation.AppointmentService;
@@ -30,6 +31,19 @@ public class AppointmentController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping(value = "/create")
+    public ResponseEntity<AppointmentResponseDto> createUser(@RequestBody AppointmentRequestDto appointment) {
+
+        try {
+            AppointmentResponseDto savedAppointment = appointmentService.create(appointment);
+
+            return new ResponseEntity<>(savedAppointment, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
     }
 
 }

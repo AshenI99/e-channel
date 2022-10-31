@@ -1,20 +1,14 @@
-package com.eda.echannel.dto.response;
+package com.eda.echannel.dto.request;
 
-import com.eda.echannel.model.Channel;
-import com.eda.echannel.model.Doctor;
-import com.eda.echannel.model.Hospital;
-import com.eda.echannel.model.Specialization;
+import com.eda.echannel.dto.response.SearchResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.ZonedDateTime;
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppointmentResponseDto {
+public class AppointmentRequestDto {
     private Long appointmentId;
     private String appointmentDate;
     private Long appointmentTime;

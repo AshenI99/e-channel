@@ -9,4 +9,8 @@ public class MessagesAndContent {
     //HOSPITAL
     public static final String HOSPITAL_01 = "Hospital does not exist";
 
+    //APPOINTMENT
+    public static final String APPOINTMENT_01 = "Patient NIC number is required";
+    public static final String APPOINTMENT_02 = "Patient EMAIL is required";
+    public static final String APPOINTMENT_03 = "Appointment date is required";
 }

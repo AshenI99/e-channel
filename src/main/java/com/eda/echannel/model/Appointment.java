@@ -26,7 +26,7 @@ public class Appointment {
     private Long appointmentId;
 
     @Column (name = "appointmentDate",length = 15)
-    private Long appointmentDate;
+    private String appointmentDate;
 
     @Column (name = "appointmentTime", length=10)
     private Long appointmentTime;
