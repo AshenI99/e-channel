@@ -22,6 +22,7 @@ import java.util.List;
 public class Appointment {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column (name = "patientID")
     private Long appointmentId;
 
     @Column (name = "appointmentDate",length = 15)
