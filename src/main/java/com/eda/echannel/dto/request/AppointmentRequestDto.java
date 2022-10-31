@@ -9,11 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppointmentRequestDto {
-    private Long appointmentId;
-    private String appointmentDate;
-    private Long appointmentTime;
-    private Integer appointmentNumber;
+    private Long channelId;
+    private String patientName;
     private String patientNIC;
     private String patientEmail;
-    private SearchResponseDto channel;
+    private String patientMobile;
 }

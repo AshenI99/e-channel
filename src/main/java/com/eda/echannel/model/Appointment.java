@@ -25,12 +25,6 @@ public class Appointment {
     @Column (name = "appointmentId")
     private Long appointmentId;
 
-    @Column (name = "appointmentDate",length = 15)
-    private String appointmentDate;
-
-    @Column (name = "appointmentTime", length=10)
-    private Long appointmentTime;
-
     @Column (name = "appointmentNumber")
     private Integer appointmentNumber;
 
@@ -40,7 +34,6 @@ public class Appointment {
     @Column (name = "patientEmail",length = 100)
     private String patientEmail;
 
-    @OneToOne
-    @JoinColumn(name = "id", insertable = false, updatable = false)
-    private Channel channel;
+    @Column (name = "channel_id")
+    private Long channelId;
 }

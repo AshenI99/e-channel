@@ -5,10 +5,7 @@ import com.eda.echannel.dto.response.AppointmentResponseDto;
 import com.eda.echannel.dto.response.SearchResponseDto;
 import com.eda.echannel.model.Appointment;
 import com.eda.echannel.model.Channel;
-import com.eda.echannel.repository.IAppointmentRepository;
-import com.eda.echannel.repository.IDoctorRepository;
-import com.eda.echannel.repository.IHospitalRepository;
-import com.eda.echannel.repository.ISpecializationRepository;
+import com.eda.echannel.repository.*;
 import com.eda.echannel.service.IAppointmentService;
 import com.eda.echannel.util.InputValidatorUtil;
 import com.eda.echannel.util.MessagesAndContent;
@@ -27,29 +24,42 @@ public class AppointmentService implements IAppointmentService {
     private final ISpecializationRepository specializationRepository;
     private final IHospitalRepository hospitalRepository;
     private final IDoctorRepository doctorRepository;
+    private final IChannelRepository channelRepository;
 
     @Autowired
     public AppointmentService(
             IAppointmentRepository appointmentRepository,
             IHospitalRepository hospitalRepository,
             ISpecializationRepository specializationRepository,
-            IDoctorRepository doctorRepository
+            IDoctorRepository doctorRepository,
+            IChannelRepository channelRepository
     ){
         this.appointmentRepository = appointmentRepository;
         this.hospitalRepository = hospitalRepository;
         this.specializationRepository = specializationRepository;
         this.doctorRepository = doctorRepository;
+        this.channelRepository = channelRepository;
     }
 
     @Override
     public AppointmentResponseDto create(AppointmentRequestDto request) throws Exception {
         try {
 
-            Appointment appointmentRequest = new Appointment();
-
             if (request == null) {
                 throw new Exception("Invalid input data.");
             }
+
+            if(!channelRepository.existsById(request.getChannelId())){
+                throw new Exception("Channel with the ID " +request.getChannelId()+ " not found.");
+            }
+
+            Channel channel = channelRepository.getById(request.getChannelId());
+
+            if(channel.getActivePatients() >= channel.getMaximumPatients()){
+                throw new Exception("Channel is already full.");
+            }
+
+            Appointment appointmentRequest = new Appointment();
 
             String patientNIC = InputValidatorUtil.validateStringProperty(MessagesAndContent.APPOINTMENT_01, request.getPatientNIC(), "NIC Number", 20);
             appointmentRequest.setPatientNIC(patientNIC);
@@ -57,13 +67,14 @@ public class AppointmentService implements IAppointmentService {
             String patientEmail = InputValidatorUtil.validateStringProperty(MessagesAndContent.APPOINTMENT_02, request.getPatientEmail(), "Patient Email", 50);
             appointmentRequest.setPatientEmail(patientEmail);
 
-            String appointmentDate = InputValidatorUtil.validateStringProperty(MessagesAndContent.APPOINTMENT_03, request.getAppointmentDate(), "Appointment Date", 50);
-            appointmentRequest.setAppointmentDate(appointmentDate);
-
-            Integer appointmentNumber = request.getAppointmentNumber();
-            appointmentRequest.setAppointmentNumber(appointmentNumber);
+            appointmentRequest.setAppointmentNumber(channel.getActivePatients() + 1);
+            appointmentRequest.setChannelId(channel.getId());
 
             Appointment savedAppointment = appointmentRepository.save(appointmentRequest);
+
+            channel.setActivePatients(channel.getActivePatients() + 1);
+
+            channelRepository.save(channel);
 
             AppointmentResponseDto appointmentDto = convertAppointmentToAppointmentResponseDto(savedAppointment);
             return appointmentDto;
@@ -97,7 +108,7 @@ public class AppointmentService implements IAppointmentService {
 
         BeanUtils.copyProperties(appointment, appointmentResponseDto);
 
-        Channel channel = appointment.getChannel();
+        Channel channel = channelRepository.getById(appointment.getChannelId());
         SearchResponseDto searchResponseDto = new SearchResponseDto();
         BeanUtils.copyProperties(channel, searchResponseDto);
 
