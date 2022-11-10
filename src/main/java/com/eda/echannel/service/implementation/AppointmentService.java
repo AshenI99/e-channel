@@ -64,6 +64,9 @@ public class AppointmentService implements IAppointmentService {
             String patientNIC = InputValidatorUtil.validateStringProperty(MessagesAndContent.APPOINTMENT_01, request.getPatientNIC(), "NIC Number", 20);
             appointmentRequest.setPatientNIC(patientNIC);
 
+            String patientName = InputValidatorUtil.validateStringProperty(MessagesAndContent.APPOINTMENT_01, request.getPatientName(), "Patient Name", 20);
+            appointmentRequest.setPatientName(patientName);
+
             String patientEmail = InputValidatorUtil.validateStringProperty(MessagesAndContent.APPOINTMENT_02, request.getPatientEmail(), "Patient Email", 50);
             appointmentRequest.setPatientEmail(patientEmail);
 

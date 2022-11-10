@@ -30,6 +30,9 @@ public class Appointment {
     @Column (name = "patientNIC",length =12)
     private String patientNIC;
 
+    @Column (name = "patientName",length =12)
+    private String patientName;
+
     @Column (name = "patientEmail",length = 100)
     private String patientEmail;
 
