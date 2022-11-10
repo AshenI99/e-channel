@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,6 +21,4 @@ public class Doctor {
 
     @Column(name = "name", length = 50)
     private String name;
-
-
 }

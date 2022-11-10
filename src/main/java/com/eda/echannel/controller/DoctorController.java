@@ -1,7 +1,5 @@
 package com.eda.echannel.controller;
 
-
-import com.eda.echannel.dto.request.DoctorRequestDto;
 import com.eda.echannel.dto.response.DoctorResponseDto;
 import com.eda.echannel.model.Doctor;
 import com.eda.echannel.service.IDoctorService;
@@ -46,15 +44,4 @@ public class DoctorController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
-    public ResponseEntity<DoctorResponseDto> createDoctor(@RequestBody DoctorRequestDto doctor) {
-
-        try {
-            DoctorResponseDto doctorResponseDto = doctorService.createDoctor(doctor);
-            return new ResponseEntity<>(doctorResponseDto, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
-
 }
